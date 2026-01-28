@@ -3,9 +3,10 @@
  * @returns {void}
  */
 /*
-Approach 1 :
-1) count all zero, one and two from the array 
-2) Reassign the same array with counted zero, one and two respectively 
+### Approach 1 :
+1) Count the number of 0s, 1s, and 2s in the array.
+
+2) Overwrite the array with all 0s first, then 1s, and finally 2s based on the counts
 
 Time Complexity  : O(n) 
 Space Complexity : O(1)
@@ -50,15 +51,17 @@ class Solution {
  * @returns {void}
  */
 /*
-Approach 2 : (Dutch National Flag) 
-1) Take three pointers low, mid and high 
-2) If element present at mid index is zero then swap the element present at low index 
-   increment low and mid index
-3) If element present at mid index is 1 then simply increment the mid index no need to swap 
-3) If element present at mid index is 2 then swap the element present at the high index and decrement high index n
+### Approach 2 : (Dutch National Flag)
+1) Maintain three pointers: low, mid, and high.
 
-Time Complexity  : O(n) 
-Space Complexity : O(1) 
+2) If the element at mid is 0, swap it with the element at low, then increment both low and mid.
+
+3) If the element at mid is 1, just increment mid.
+
+4) If the element at mid is 2, swap it with the element at high, then decrement high.
+
+Time Complexity: O(n)
+Space Complexity: O(1)
 */
 class Solution {
     sort012(arr) {
