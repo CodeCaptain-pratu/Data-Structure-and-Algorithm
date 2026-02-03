@@ -61,3 +61,32 @@ class Solution {
         return result;
     }
 }
+
+/**
+ * @param {number[]} prices
+ * @returns {number}
+ */
+/*Approach 3 : Using constant space 
+1) Travese the array from left to right 
+2) Keep track of minimum price encountered so far (minSoFar) to determine the best day to buy 
+3) For each day calculate the profit by subtracting minSoFar from the current day price
+4) Update the maximum profit if the current profit is greater than the previously recorded profit.
+
+Time Complexity  : O(n)
+Space Complexity : O(1)
+*/
+class Solution {
+    maxProfit(prices) {
+        // your code here
+        let n=prices.length;
+        let result=-Infinity;
+        let minSoFar=Infinity;
+        let profit=0;
+        for(let i=0;i<n;i++){
+            minSoFar=Math.min(minSoFar,prices[i]);
+            profit=prices[i]-minSoFar;
+            result=Math.max(profit,result);
+        }
+        return result;
+    }
+}
