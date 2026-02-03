@@ -31,7 +31,18 @@ class Solution {
     }
 }
 
+/*
+Approach 2 : Using Auxilary space
+1) Create an array of size n to store the maximum future price for each day to sell the stock (maxToRight)  
+2) Traverse the price array from right to left and store the maximum value between current day price and 
+next day store maximum
+3) Traverse the array from left to right and calculate the profit by substracting the current day price from 
+the corresponding maxToRight value. Update maximum profit accordingly.
 
+Time Complexity  : O(n) 
+Space Complexity : O(n) 
+
+*/
 class Solution {
     maxProfit(prices) {
         // your code here
