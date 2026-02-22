@@ -4,7 +4,7 @@
  */
 
 /*
-Approach : 
+Approach : - Brute Force 
 1) Convert the given number into its binary representation 
    and store it as 
 2) Traverse the binary string from left to right
