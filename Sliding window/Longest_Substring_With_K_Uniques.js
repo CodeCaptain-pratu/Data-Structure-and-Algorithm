@@ -93,3 +93,62 @@ class Solution {
         return maxlen;
     }
 }
+
+/**
+ * @param {string} s
+ * @param {number} k
+ * @returns {number}
+ */
+
+/*Approach 3 : Sliding Window with Constant Space
+
+1) Initialize maxlen = -1 to handle the case when no substring with exactly k distinct characters exists.
+2) Initialize two pointers i = 0 and j = 0 to represent the sliding window.
+3) Create a frequency array of size 26 to store the frequency of characters.
+4) Find the index of the character at j:
+   - idx = s[j].charCodeAt(0) - 97
+   - If freq[idx] === 0, increment the distinct counter.
+5) Increase the frequency of the character.
+6) If distinct > k, shrink the window from the left:
+   - Decrease the frequency of the character at index i
+   - If its frequency becomes 0, decrement distinct
+   - Increment i
+7) If distinct === k, update :
+   - maxlen = max(maxlen, j - i + 1)
+8) Increment j to expand the window.
+9) Finally return maxlen.
+
+Time Complexity  : O(n) 
+Space Complexity : O(26) = O(1)*/
+
+class Solution {
+    longestKSubstr(s, k) {
+        // code here
+        let n=s.length;
+        let i=0, j=0;
+        let distinct=0;
+        let freq=new Array(26).fill(0);
+        let maxlen=-1;
+        while(j<n){
+            let idx=s[j].charCodeAt(0)-97;
+            if(freq[idx]===0){
+                distinct++;
+            }
+            freq[idx]++;
+            while(distinct>k){
+                let idx2=s[i].charCodeAt(0)-97;
+                freq[idx2]--;
+                if(freq[idx2]===0){
+                    distinct--;
+                }
+                i++;
+            }
+            if(distinct===k){
+                maxlen=Math.max(maxlen,j-i+1);
+            }
+            j++;
+        }
+        return maxlen;
+    }
+}
+
